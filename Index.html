@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios - Centro Educativo Lingony</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e5631; /* Verde oscuro principal del logo */
+            --secondary: #2e7d32; /* Verde medio */
+            --accent: #4caf50; /* Verde claro/accent */
+            --gold: #d4af37; /* Dorado del logo */
+            --light: #f8f9fa; /* Fondo claro */
+            --dark: #0d1f0a; /* Verde muy oscuro */
+            --gray-light: #e9ecef; /* Gris claro */
+            --gray-medium: #adb5bd; /* Gris medio */
+            --success: #27ae60;
+            --warning: #f39c12;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            color: var(--primary);
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--gold);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .logo-text .subtitle {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .logo-text .motto {
+            font-size: 0.8rem;
+            color: var(--gray-medium);
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 86, 49, 0.85), rgba(13, 31, 10, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray-light);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark);
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c19b2e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* Semester Filters */
+        .semester-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Semester Cards */
+        .semester-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+
+        .semester-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: none;
+            border-top: 4px solid var(--gold);
+        }
+
+        .semester-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .semester-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .semester-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .semester-header h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .semester-courses {
+            padding: 1.5rem;
+        }
+
+        .course-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-code {
+            font-weight: 600;
+            color: var(--primary);
+            background-color: #f0f9f0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .course-name {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .course-credits {
+            font-weight: 600;
+            color: var(--dark);
+            background-color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin-top: 3rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            background-color: white;
+            transition: transform 0.3s;
+            border-top: 3px solid var(--gold);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul li i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--primary);
+            font-size: 0.9rem;
+            color: var(--gray-medium);
+        }
+
+        .copyright a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* Logo styling for institution name */
+        .institution-name {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .institution-name h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution-name .motto {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .semester-cards {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .nav-menu.active {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .semester-filters {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-img {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .semester-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-section {
+                padding: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .institution-name h2 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-placeholder {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .logo-real {
+                width: 70px;
+                height: 70px;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">
+                    <div class=""><img src="Logo.png" alt="Logo Centro Educativo Lingony" class="logo-real" style="max-width: 70px;"></div>
+                    <div class="logo-text">
+                        <h1>Centro Educativo Lingony</h1>
+                        <div class="subtitle">INTELIGENCIA ACADÉMICA</div>
+                        <div class="motto"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#informacion">Información</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Institution Name Banner
+    <div class="container institution-name">
+        <h2>Centro Educativo Lingony</h2>
+        <div class="motto">"Inteligencia Académica para un Futuro Brillante"</div>
+    </div> -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Cursos por cuatrimestre Licenciatura en Enfermería</h2>
+            <p>Encuentra aquí la secuencia completa de los cursos que debes tomar durante tu formación. Todos los cursos están organizados por cuatrimestre para facilitar tu planificación académica.</p>
+            <a href="#cursos" class="btn">Ver Cursos por Cuatrimestre</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Semester Filters -->
+        <section id="cursos">
+            <div class="section-title">
+                <h2>Cursos por Cuatrimestre</h2>
+            </div>
+            
+            <div class="semester-filters" id="semesterFilters">
+                <button class="filter-btn active" data-semester="all">Todos los Cuatrimestres</button>
+                <button class="filter-btn" data-semester="1">Cuatrimestre 1</button>
+                <button class="filter-btn" data-semester="2">Cuatrimestre 2</button>
+                <button class="filter-btn" data-semester="3">Cuatrimestre 3</button>
+                <button class="filter-btn" data-semester="4">Cuatrimestre 4</button>
+                <button class="filter-btn" data-semester="5">Cuatrimestre 5</button>
+                <button class="filter-btn" data-semester="6">Cuatrimestre 6</button>
+            </div>
+            
+            <!-- Semester Cards -->
+            <div class="semester-cards" id="semesterCards">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="info-section" id="informacion">
+            <div class="section-title">
+                <h2>Información Importante</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Plan de Estudios</h3>
+                    <p>Conoce el itinerario completo de tu carrera. Todos los cursos están secuenciados para garantizar una formación progresiva y completa en el Centro Educativo Lingony.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Calendario Académico</h3>
+                    <p>Consulta las fechas importantes del ciclo académico: inicio de clases, períodos de exámenes, vacaciones y más en nuestra institución.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Preguntas Frecuentes</h3>
+                    <p>¿Tienes dudas sobre tu plan de estudios? Revisa nuestra sección de preguntas frecuentes para resolver tus inquietudes.</p>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Asesoría Académica</h3>
+                    <p>Si necesitas orientación sobre tu trayectoria académica, solicita una cita con nuestro departamento de asesoría estudiantil.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Centro Educativo Lingony</h3>
+                    <p>Institución educativa comprometida con la excelencia académica y la formación integral de nuestros estudiantes. "Inteligencia Académica" es nuestro lema.</p>
+                    <div style="margin-top: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div ><img src="Logo.png" alt="Logo Centro Educativo Lingony" class="logo-real" style="max-width: 50px;"></div>
+                            <div>
+                                <div style="font-weight: bold; color: var(--gold);">Centro Educativo Lingony</div>
+                                <div style="font-size: 0.9rem; color: #c5cae9;">Inteligencia Académica</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><i class="fas fa-chevron-right"></i><a href="#inicio">Inicio</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#cursos">Cursos por Cuatrimestre</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#informacion">Información Académica</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Dirección Académica  <br> 55 8678 9279 </li>
+                        <li><i class="fas fa-circle"></i> Coordinación Enfermería  <br> 55 1966 3040 </li>
+                        <li><i class="fas fa-circle"></i> Coordinación de Campos Clínicos <br> 55 4069 1702 </li>
+                        <li><i class="fas fa-circle"></i> Servicios Escolares <br> 56 1816 0217 </li>
+                        <li><i class="fas fa-circle"></i> Control de Pagos <br> 55 1593 9214 - 56 1816 0217 </li>
+
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p> 2026 Centro Educativo Lingony.</a></p>
+                <p style="margin-top: 5px; color: var(--gold);">"Inteligencia Académica"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Course data for Centro Educativo Lingony
+        const coursesData = [
+            {
+                semester: 1,
+                title: "Primer Cuatrimestre - Fundamentos",
+                courses: [
+                    { code: "LNG101", name: "Lenguaje y Comunicación", credits: 4 },
+                    { code: "MAT101", name: "Matemáticas Fundamentales", credits: 5 },
+                    { code: "ING101", name: "Inglés Básico", credits: 3 },
+                    { code: "CIE101", name: "Introducción a las Ciencias", credits: 4 },
+                    { code: "TIC101", name: "Tecnologías de la Información", credits: 3 }
+                ]
+            },
+            {
+                semester: 2,
+                title: "Segundo Cuatrimestre - Desarrollo Básico",
+                courses: [
+                    { code: "LNG102", name: "Comunicación Avanzada", credits: 4 },
+                    { code: "MAT102", name: "Álgebra y Geometría", credits: 5 },
+                    { code: "ING102", name: "Inglés Intermedio", credits: 3 },
+                    { code: "SOC101", name: "Ciencias Sociales", credits: 4 },
+                    { code: "FIL101", name: "Filosofía y Ética", credits: 3 }
+                ]
+            },
+            {
+                semester: 3,
+                title: "Tercer Cuatrimestre - Especialización Inicial",
+                courses: [
+                    { code: "EST201", name: "Estadística Aplicada", credits: 4 },
+                    { code: "FIS201", name: "Física General", credits: 5 },
+                    { code: "QUI201", name: "Química Básica", credits: 4 },
+                    { code: "BIO201", name: "Biología General", credits: 4 },
+                    { code: "MET201", name: "Metodología de Investigación", credits: 3 }
+                ]
+            },
+            {
+                semester: 4,
+                title: "Cuarto Cuatrimestre - Profundización",
+                courses: [
+                    { code: "CAL201", name: "Cálculo Diferencial", credits: 5 },
+                    { code: "PRO201", name: "Programación Básica", credits: 4 },
+                    { code: "PSI201", name: "Psicología Educativa", credits: 4 },
+                    { code: "ECO201", name: "Economía Básica", credits: 4 },
+                    { code: "ART201", name: "Arte y Cultura", credits: 3 }
+                ]
+            },
+            {
+                semester: 5,
+                title: "Quinto Cuatrimestre - Avanzado",
+                courses: [
+                    { code: "CAL202", name: "Cálculo Integral", credits: 5 },
+                    { code: "PRO202", name: "Programación Avanzada", credits: 4 },
+                    { code: "ADM301", name: "Administración Educativa", credits: 4 },
+                    { code: "PED301", name: "Pedagogía Moderna", credits: 4 },
+                    { code: "IDI301", name: "Idioma Electivo", credits: 3 }
+                ]
+            },
+            {
+                semester: 6,
+                title: "Sexto Cuatrimestre - Integración",
+                courses: [
+                    { code: "INV401", name: "Proyecto de Investigación", credits: 6 },
+                    { code: "PRA401", name: "Prácticas Profesionales", credits: 5 },
+                    { code: "ETI401", name: "Ética Profesional", credits: 4 },
+                    { code: "EMP401", name: "Emprendimiento", credits: 4 },
+                    { code: "SEM401", name: "Seminario de Titulación", credits: 3 }
+                ]
+            }
+        ];
+
+        // DOM elements
+        const semesterCardsContainer = document.getElementById('semesterCards');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Generate semester cards
+        function generateSemesterCards() {
+            semesterCardsContainer.innerHTML = '';
+            
+            coursesData.forEach(semester => {
+                const card = document.createElement('div');
+                card.className = 'semester-card';
+                card.dataset.semester = semester.semester;
+                
+                let coursesHTML = '';
+                semester.courses.forEach(course => {
+                    coursesHTML += `
+                        <div class="course-item">
+                            <div class="course-code">${course.code}</div>
+                            <div class="course-name">${course.name}</div>
+                            <div class="course-credits">${course.credits} créditos</div>
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="semester-header">
+                        <h3>${semester.title}</h3>
+                        <p>${semester.courses.length} cursos • Total: ${semester.courses.reduce((sum, course) => sum + course.credits, 0)} créditos</p>
+                    </div>
+                    <div class="semester-courses">
+                        ${coursesHTML}
+                    </div>
+                `;
+                
+                semesterCardsContainer.appendChild(card);
+            });
+            
+            // Show all semesters by default
+            showSemester('all');
+        }
+
+        // Filter semester cards
+        function showSemester(semester) {
+            const cards = document.querySelectorAll('.semester-card');
+            
+            cards.forEach(card => {
+                if (semester === 'all' || card.dataset.semester === semester) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            
+            // Update active filter button
+            filterButtons.forEach(btn => {
+                if (btn.dataset.semester === semester) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize event listeners
+        function initEventListeners() {
+            // Filter buttons
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    showSemester(btn.dataset.semester);
+                });
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.innerHTML = navMenu.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize the page
+        function init() {
+            generateSemesterCards();
+            initEventListeners();
+        }
+
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
